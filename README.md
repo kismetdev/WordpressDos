@@ -19,7 +19,8 @@ Because we are purely using goroutines for each request for the maximum amount o
 ❗ For security testing purposes only! I am not responsible for any damage done with this tool.❗
 ## The "Exploit"
 
-The Dos "Exploit" I am using here is not a real exploit per se, but more of a feature that can be exploited.
+The Dos "Exploit" I am using here is not a real exploit per se, but more of a feature that can be exploited.  
+
 The ``XML-RPC API`` is usually used to interact with the Wordpress system (editing posts, etc..).
 This can be abused by sending huge amounts of XML requests to the api, which may result in database crashes or even complete server crashes with just a single machine (Dos) on lower end servers. It can also be used to Brute Force a WordPress login.
 
